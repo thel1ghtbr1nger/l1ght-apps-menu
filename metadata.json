@@ -1,11 +1,11 @@
 {
-"extension-id": "apps-menu",
-"uuid": "apps-menu@gnome-shell-extensions.gcampax.github.com",
+"extension-id": "l1ght-apps-menu",
+"uuid": "l1ght-apps-menu",
 "settings-schema": "org.gnome.shell.extensions.apps-menu",
 "gettext-domain": "gnome-shell-extensions",
-"name": "Applications Menu",
-"description": "Add a category-based menu for applications.\nThis extension is part of Classic Mode and is officially supported by GNOME. Please do not report bugs using the form below, use GNOME's GitLab instance instead.",
-"original-authors": [ "e2002@bk.ru", "debarshir@gnome.org" ],
+"name": "L1ght Applications Menu",
+"description": "Add a minimalist category-based menu for applications.\nThis is a user modified extension from Classic Mode and is not officially supported by GNOME. Please report bugs using the form below.",
+"original-authors": [ "e2002@bk.ru", "debarshir@gnome.org", "l1ghtbr1nger@protonmail.com" ],
 "shell-version": [ "43" ],
-"url": "https://gitlab.gnome.org/GNOME/gnome-shell-extensions"
+"url": "https://github.com/thel1ghtbr1nger/l1ght-apps-menu"
 }
