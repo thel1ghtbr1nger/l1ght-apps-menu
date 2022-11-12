@@ -1,8 +1,8 @@
 {
 "extension-id": "l1ght-apps-menu",
 "uuid": "l1ght-apps-menu@l1ght.industries",
-"settings-schema": "org.gnome.shell.extensions.l1ght-apps-menu",
-"gettext-domain": "l1ght-apps-menu@l1ght.industries",
+"settings-schema": "org.gnome.shell.extensions.apps-menu",
+"gettext-domain": "l1ght-apps-menu",
 "name": "L1ght Applications Menu",
 "description": "Add a minimalist category-based menu for applications.\nThis is a user modified extension from Classic Mode and is not officially supported by GNOME. Please report bugs using the form below.",
 "original-authors": [ "e2002@bk.ru", "debarshir@gnome.org"],
