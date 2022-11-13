@@ -551,7 +551,7 @@ class ApplicationsButton extends PanelMenu.Button {
         this.mainBox = new St.BoxLayout({vertical: false});
         this.leftBox = new St.BoxLayout({vertical: false});
         this.applicationsScrollBox = new St.ScrollView({
-            style_class: 'apps-menu hfade',
+            style_class: 'apps-menu vfade',
             x_expand: true,
         });
         this.applicationsScrollBox.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
@@ -563,7 +563,7 @@ class ApplicationsButton extends PanelMenu.Button {
             this.menu.passEvents = false;
         });
         this.categoriesScrollBox = new St.ScrollView({
-            style_class: 'hfade',
+            style_class: 'vfade',
         });
         this.categoriesScrollBox.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
         vscroll = this.categoriesScrollBox.get_vscroll_bar();
@@ -571,9 +571,9 @@ class ApplicationsButton extends PanelMenu.Button {
         vscroll.connect('scroll-stop', () => (this.menu.passEvents = false));
         this.leftBox.add_child(this.categoriesScrollBox);
 
-        this.applicationsBox = new St.BoxLayout({vertical: true});
+        this.applicationsBox = new St.BoxLayout({vertical: false});
         this.applicationsScrollBox.add_actor(this.applicationsBox);
-        this.categoriesBox = new St.BoxLayout({vertical: true});
+        this.categoriesBox = new St.BoxLayout({vertical: false});
         this.categoriesScrollBox.add_actor(this.categoriesBox);
 
         this.mainBox.add(this.leftBox);
