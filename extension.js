@@ -424,7 +424,7 @@ class ApplicationsButton extends PanelMenu.Button {
 
     _createVertSeparator() {
         let separator = new St.DrawingArea({
-            style_class: 'calendar-vertical-separator',
+            style_class: 'calendar-horizontal-separator',
             pseudo_class: 'highlighted',
         });
         separator.connect('repaint', this._onVertSepRepaint.bind(this));
@@ -549,7 +549,7 @@ class ApplicationsButton extends PanelMenu.Button {
         let section = new PopupMenu.PopupMenuSection();
         this.menu.addMenuItem(section);
         this.mainBox = new St.BoxLayout({vertical: false});
-        this.leftBox = new St.BoxLayout({vertical: true});
+        this.leftBox = new St.BoxLayout({vertical: false});
         this.applicationsScrollBox = new St.ScrollView({
             style_class: 'apps-menu vfade',
             x_expand: true,
@@ -571,9 +571,9 @@ class ApplicationsButton extends PanelMenu.Button {
         vscroll.connect('scroll-stop', () => (this.menu.passEvents = false));
         this.leftBox.add_child(this.categoriesScrollBox);
 
-        this.applicationsBox = new St.BoxLayout({vertical: true});
+        this.applicationsBox = new St.BoxLayout({vertical: false});
         this.applicationsScrollBox.add_actor(this.applicationsBox);
-        this.categoriesBox = new St.BoxLayout({vertical: true});
+        this.categoriesBox = new St.BoxLayout({vertical: false});
         this.categoriesScrollBox.add_actor(this.categoriesBox);
 
         this.mainBox.add(this.leftBox);
