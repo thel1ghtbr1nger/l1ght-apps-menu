@@ -17,9 +17,9 @@ const _ = ExtensionUtils.gettext;
 const appSys = Shell.AppSystem.get_default();
 
 const APPLICATION_ICON_SIZE = 32;
-const HORIZ_FACTOR = 1;
-const MENU_HEIGHT_OFFSET = 5;
-const NAVIGATION_REGION_OVERSHOOT = 25;
+const HORIZ_FACTOR = 5;
+const MENU_HEIGHT_OFFSET = 12;
+const NAVIGATION_REGION_OVERSHOOT = 50;
 
 Gio._promisify(Gio._LocalFilePrototype, 'query_info_async', 'query_info_finish');
 Gio._promisify(Gio._LocalFilePrototype, 'set_attributes_async', 'set_attributes_finish');
@@ -424,7 +424,7 @@ class ApplicationsButton extends PanelMenu.Button {
 
     _createVertSeparator() {
         let separator = new St.DrawingArea({
-            style_class: 'calendar-horizontal-separator',
+            style_class: 'calendar-vertical-separator',
             pseudo_class: 'highlighted',
         });
         separator.connect('repaint', this._onVertSepRepaint.bind(this));
@@ -549,7 +549,7 @@ class ApplicationsButton extends PanelMenu.Button {
         let section = new PopupMenu.PopupMenuSection();
         this.menu.addMenuItem(section);
         this.mainBox = new St.BoxLayout({vertical: false});
-        this.leftBox = new St.BoxLayout({vertical: false});
+        this.leftBox = new St.BoxLayout({vertical: true});
         this.applicationsScrollBox = new St.ScrollView({
             style_class: 'apps-menu vfade',
             x_expand: true,
@@ -571,9 +571,9 @@ class ApplicationsButton extends PanelMenu.Button {
         vscroll.connect('scroll-stop', () => (this.menu.passEvents = false));
         this.leftBox.add_child(this.categoriesScrollBox);
 
-        this.applicationsBox = new St.BoxLayout({vertical: false});
+        this.applicationsBox = new St.BoxLayout({vertical: true});
         this.applicationsScrollBox.add_actor(this.applicationsBox);
-        this.categoriesBox = new St.BoxLayout({vertical: false});
+        this.categoriesBox = new St.BoxLayout({vertical: true});
         this.categoriesScrollBox.add_actor(this.categoriesBox);
 
         this.mainBox.add(this.leftBox);
@@ -591,9 +591,8 @@ class ApplicationsButton extends PanelMenu.Button {
         this.applicationsByCategory = {};
         this._tree.load_sync();
         let root = this._tree.get_root_directory();
-        let categoryMenuItem = new CategoryMenuItem(this, null);        
+        let categoryMenuItem = new CategoryMenuItem(this, null);
         this.categoriesBox.add_actor(categoryMenuItem);
-        
         let iter = root.iter();
         let nextType;
         while ((nextType = iter.next()) !== GMenu.TreeItemType.INVALID) {
@@ -620,7 +619,7 @@ class ApplicationsButton extends PanelMenu.Button {
         let scaleFactor = themeContext.scale_factor;
         let categoriesHeight = this.categoriesBox.height / scaleFactor;
         let height = Math.round(categoriesHeight) + MENU_HEIGHT_OFFSET;
-        this.mainBox.style += `height: ${height-32}px`;
+        this.mainBox.style += `height: ${height - 32}px`;
     }
 
     selectCategory(dir) {
